@@ -329,7 +329,7 @@ namespace BlockchainAnalyser
             int blockLimitCounter = 0;
             foreach(var trade in m_tradeMap.Values)
             {
-                if((long)trade.DepositJson["blocktime"] < (1612981296655 / 1000))
+                if((long)trade.DepositJson["blocktime"] < 1612981296)
                 {
                     ++blockLimitCounter;
                 }
