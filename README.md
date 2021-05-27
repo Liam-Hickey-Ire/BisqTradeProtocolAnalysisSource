@@ -41,3 +41,14 @@ In order to identify and remove arbitrated Bisq trades, this project relies on b
 - RIPEMD160 (https://www.nuget.org/packages/RIPEMD160/1.0.1)
 - System.Configuration.ConfigurationManager (https://www.nuget.org/packages/System.Configuration.ConfigurationManager)
 - System.Data.SqlClient (https://www.nuget.org/packages/System.Data.SqlClient)
+
+## Execution
+
+The project has five basic functions:
+- Retrieve Bisq trades.
+- Retrieve Bisq trades with high verbosity.
+- Create file for identifying arbitrated trades using a script.
+- Validate retrieved Bisq trades.
+- Run trade protocol-specific address clustering heuristic.
+
+These functions are selected using appsettings (`true`/`false`).
