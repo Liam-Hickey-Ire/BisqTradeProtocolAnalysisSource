@@ -32,7 +32,7 @@ This project queries a SQL Database in order to retrieve Bisq peer-to-peer data.
 
 #### Btcdeb
 
-
+In order to identify and remove arbitrated Bisq trades, this project relies on btcdeb, a Bitcoin script debugging tool, see https://github.com/bitcoin-core/btcdeb. To install btcdeb, see the project's README.md. Note that this project isn't compatible with Windows, this means that WSL (Windows Subsystem Linux) is required to install and run btcdeb on Windows. Once WSL is installed, it can be run using the `wsl` command on Powershell. From there, simply follow the normal btcdeb installation steps for Linux. Once btcdeb has been installed on Windows, the `wsl` command is required to run btcdeb.
 
 #### NuGet Packages Used
 
