@@ -28,7 +28,7 @@ When syncing Bitcoin Core is syncing the Bitcoin blockchain, use the following l
 
 #### Peer-to-peer Data
 
-This project queries a SQL Database in order to retrieve Bisq peer-to-peer data. The SQL database in question is created by another project analysing the Bisq DAO. As such, creation of these databases requires the installation of SQL and for the Bisq DAO analysis project (https://github.com/Liam-Hickey-Ire/BisqDAOAnalysisSource) to be executed. For a more detailed walkthrough of how to run Bisq DAO analysis project, see the README.md for that project.
+This project queries a SQL Database in order to retrieve Bisq peer-to-peer data. The SQL database in question is created by another project analysing the Bisq DAO. As such, creation of these databases requires the installation of SQL and for the Bisq DAO analysis project (https://github.com/Liam-Hickey-Ire/BisqDAOAnalysisSource) to be executed. For a more detailed walk-through of how to run Bisq DAO analysis project, see the README.md for that project.
 
 #### Btcdeb
 
