@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Net;
 using System.Configuration;
 
@@ -20,6 +20,11 @@ namespace BlockchainAnalyser
         private static string sqlFilepath = string.Empty;
         private static int firstTradeBlockHeight = 0;
         private static int connectionLimit = 0;
+        private static bool retrieveTrades = false;
+        private static bool retrieveVerboseTrades = false;
+        private static bool generateBtcdebReadyFile = false;
+        private static bool validateTrades = false;
+        private static bool runClustering = false;
 
         private static BlockchainAnalyser blockchainAnalyser;
 
@@ -42,7 +47,12 @@ namespace BlockchainAnalyser
 
             // Parse Non-Strings
             if (!Int32.TryParse(ConfigurationManager.AppSettings["first-trade-block-height"], out firstTradeBlockHeight)
-                || !Int32.TryParse(ConfigurationManager.AppSettings["connection-limit"], out connectionLimit))
+                || !Int32.TryParse(ConfigurationManager.AppSettings["connection-limit"], out connectionLimit)
+                || !Boolean.TryParse(ConfigurationManager.AppSettings["retrieve-trades"], out retrieveTrades)
+                || !Boolean.TryParse(ConfigurationManager.AppSettings["retrieve-verbose-trades"], out retrieveVerboseTrades)
+                || !Boolean.TryParse(ConfigurationManager.AppSettings["generate-btcdeb-ready-file"], out generateBtcdebReadyFile)
+                || !Boolean.TryParse(ConfigurationManager.AppSettings["validate-trades"], out validateTrades)
+                || !Boolean.TryParse(ConfigurationManager.AppSettings["run-clustering"], out runClustering))
             {
                 Console.WriteLine("Error: Failed to parse some appsettings");
             }
@@ -59,12 +69,27 @@ namespace BlockchainAnalyser
                     segwitListPath,
                     sqlConnectionString,
                     sqlFilepath);
-
-                //blockchainAnalyser.GetBisqDepositTxes(firstTradeBlockHeight, connectionLimit);
-                //blockchainAnalyser.GetFullTradeDetails();
-                //blockchainAnalyser.TradeMapToArbitrationFile();
-                blockchainAnalyser.RunClustering();
-                //blockchainAnalyser.ValidateTrades();
+                
+                if(retrieveTrades)
+                {
+                    blockchainAnalyser.GetBisqDepositTxes(firstTradeBlockHeight, connectionLimit);
+                }
+                else if(retrieveVerboseTrades)
+                {
+                    blockchainAnalyser.GetFullTradeDetails();
+                }
+                else if(generateBtcdebReadyFile)
+                {
+                    blockchainAnalyser.TradeMapToArbitrationFile();
+                }
+                else if(validateTrades)
+                {
+                    blockchainAnalyser.ValidateTrades();
+                }
+                else
+                {
+                    blockchainAnalyser.RunClustering();
+                }
             }
 
             Console.WriteLine("Press 'c' to close application...");
